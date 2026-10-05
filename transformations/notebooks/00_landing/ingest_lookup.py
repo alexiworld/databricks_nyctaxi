@@ -5,7 +5,7 @@
 # ///
 import sys
 import os
-Go two levels up to reach the project root
+# Go two levels up to reach the project root
 project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 
 if project_root not in sys.path:
