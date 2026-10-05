@@ -1,15 +1,25 @@
 # Databricks notebook source
+# Databricks notebook source
+import sys
+import os
+# Go two levels up to reach the project root
+project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
 from pyspark.sql.functions import col, when, timestamp_diff
 from datetime import date
 from dateutil.relativedelta import relativedelta
+from modules.utils.date_utils import get_month_start_n_months_ago
 
 # COMMAND ----------
 
 # Get the first day of the month three months ago
-three_months_ago_start = date.today().replace(day=1) - relativedelta(months=3)
+three_months_ago_start = get_month_start_n_months_ago(3)
 
 # Get the first day of the month two month ago
-two_month_ago_start = date.today().replace(day=1) - relativedelta(months=2)
+two_month_ago_start = get_month_start_n_months_ago(2)
 
 # COMMAND ----------
 
